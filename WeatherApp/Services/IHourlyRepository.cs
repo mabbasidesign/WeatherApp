@@ -12,7 +12,7 @@ namespace WeatherApp.Services
         Hourly GetWeatherDaily(int id);
 
 
-        bool CreateHorlyWeather(IHourlyRepository weatherDaily);
+        bool CreateHorlyWeather(Hourly weatherDaily);
         bool UpdateHorlyWeather(Hourly weatherDaily);
         bool DeletHorlyWeather(Hourly weatherDaily);
         bool Save(); 
