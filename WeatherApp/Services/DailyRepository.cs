@@ -14,29 +14,29 @@ namespace WeatherApp.Services
             _db = db;
         }
 
-        public ICollection<Daily> GetWeatherDaily()
+        public ICollection<Daily> GetDailyWeather()
         {
             return _db.Days.OrderBy(x => x.Situation).ToList();
         }
 
-        public Daily GetWeatherDaily(int id)
+        public Daily GetDailyWeather(int id)
         {
             return _db.Days.Where(w => w.Id == id).FirstOrDefault();
         }
 
-        public bool CreateWeatherDaily(Daily weatherDaily)
+        public bool CreateDailyWeather(Daily weatherDaily)
         {
             _db.Add(weatherDaily);
             return Save();
         }
 
-        public bool UpdateWeatherDaily(Daily weatherDaily)
+        public bool UpdateDailyWeather(Daily weatherDaily)
         {
             _db.Update(weatherDaily);
             return Save();
         }
 
-        public bool DeleteWeatherDaily(Daily weatherDaily)
+        public bool DeleteDailyWeather(Daily weatherDaily)
         {
             _db.Remove(weatherDaily);
             return Save();
@@ -47,7 +47,6 @@ namespace WeatherApp.Services
             var saved = _db.SaveChanges();
             return saved >= 0 ? true : false;
         }
-
 
     }
 }
