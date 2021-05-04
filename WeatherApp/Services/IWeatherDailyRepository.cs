@@ -8,13 +8,13 @@ namespace WeatherApp.Services
 {
     interface IWeatherDailyRepository
     {
-        ICollection<Day> GetWeatherDaily();
-        Day GetWeatherDaily(int id);
+        ICollection<Daily> GetWeatherDaily();
+        Daily GetWeatherDaily(int id);
 
 
-        bool CreateWeatherDaily(Day weatherDaily);
-        bool UpdateWeatherDaily(Day weatherDaily);
-        bool DeleteWeatherDaily(Day weatherDaily);
+        bool CreateWeatherDaily(Daily weatherDaily);
+        bool UpdateWeatherDaily(Daily weatherDaily);
+        bool DeleteWeatherDaily(Daily weatherDaily);
         bool Save();
     }
 }
