@@ -6,22 +6,22 @@ using WeatherApp.Models;
 
 namespace WeatherApp.Services
 {
-    public class WeatherDailyRepository : IWeatherDailyRepository
+    public class DailyRepository : IDailyRepository
     {
         private WeatherDbContext _db;
-        public WeatherDailyRepository(WeatherDbContext db)
+        public DailyRepository(WeatherDbContext db)
         {
             _db = db;
         }
 
         public ICollection<Daily> GetWeatherDaily()
         {
-            return _db.WeatherDailys.OrderBy(x => x.Situation).ToList();
+            return _db.Days.OrderBy(x => x.Situation).ToList();
         }
 
         public Daily GetWeatherDaily(int id)
         {
-            return _db.WeatherDailys.Where(w => w.Id == id).FirstOrDefault();
+            return _db.Days.Where(w => w.Id == id).FirstOrDefault();
         }
 
         public bool CreateWeatherDaily(Daily weatherDaily)

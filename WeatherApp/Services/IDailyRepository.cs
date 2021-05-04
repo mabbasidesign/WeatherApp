@@ -6,7 +6,7 @@ using WeatherApp.Models;
 
 namespace WeatherApp.Services
 {
-    interface IWeatherDailyRepository
+    interface IDailyRepository
     {
         ICollection<Daily> GetWeatherDaily();
         Daily GetWeatherDaily(int id);

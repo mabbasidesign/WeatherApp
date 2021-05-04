@@ -14,7 +14,9 @@ namespace WeatherApp.Services
         {
         }
 
-        public virtual DbSet<Daily> WeatherDailys { get; set; }
+        public virtual DbSet<Daily> Days { get; set; }
+        public virtual DbSet<Hourly> Hours { get; set; }
+        public virtual DbSet<City> Cities { get; set; }
 
     }
 }

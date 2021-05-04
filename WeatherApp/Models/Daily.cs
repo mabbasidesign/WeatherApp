@@ -24,6 +24,7 @@ namespace WeatherApp.Models
         public int WindSpeed { get; set; }
         public TimeSpan SunriseTime { get; set; }
         public TimeSpan SunetTime { get; set; }
+        public TimeSpan LastUpdatedAt { get; set; }
 
         public virtual City City { get; set; }
     }
