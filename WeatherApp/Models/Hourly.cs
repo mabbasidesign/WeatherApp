@@ -10,13 +10,20 @@ namespace WeatherApp.Models
     public class Hourly
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
+        [Required]
+        [Range(-50, 60)]
         public int Temperature { get; set; }
-        public int Humidity { get; set; }
+        public float Humidity { get; set; }
         public int WindSpeed { get; set; }
 
-        public virtual City City { get; set; }
+        public virtual ICollection<HourlyCity> HourlyCities { get; set; }
+
+
+        //public int CityId { get; set; }
+
+        //[ForeignKey("CityId")]
+        //public City City { get; set; }
     }
 }

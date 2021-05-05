@@ -20,7 +20,7 @@ namespace WeatherApp.Models
         public double Longitude { get; set; }
         public int ZipCode { get; set; }
 
-        public virtual ICollection<Daily> Days { get; set; }
-        public virtual ICollection<Hourly> Hours { get; set; }
+        public virtual ICollection<DailyCity> DailyCities { get; set; }
+        public virtual ICollection<HourlyCity> HourlyCities { get; set; }
     }
 }

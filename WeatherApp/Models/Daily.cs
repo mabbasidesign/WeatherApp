@@ -10,15 +10,16 @@ namespace WeatherApp.Models
     public class Daily
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         public DateTime Date { get; set; }
 
         [Required]
+        [Range(-60, 60)]
         public int MinTemperaure { get; set; }
 
         [Required]
+        [Range(-50, 60)]
         public int MaxTemperature { get; set; }
         public string Situation { get; set; }
         public int WindSpeed { get; set; }
@@ -26,6 +27,12 @@ namespace WeatherApp.Models
         public TimeSpan SunetTime { get; set; }
         public TimeSpan LastUpdatedAt { get; set; }
 
-        public virtual City City { get; set; }
+        public virtual ICollection<DailyCity> DailyCities { get; set; }
+
+
+        //public int CityId { get; set; }
+
+        //[ForeignKey("CityId")]
+        //public City City { get; set; }
     }
 }
