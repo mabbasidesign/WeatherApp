@@ -8,9 +8,9 @@ namespace WeatherApp.Models
     public class HourlyCity
     {
         public int HourlyId { get; set; }
-        public Hourly hourly { get; set; }
+        public Hourly Hourly { get; set; }
 
         public int CityyId { get; set; }
-        public City city { get; set; }
+        public City City { get; set; }
     }
 }

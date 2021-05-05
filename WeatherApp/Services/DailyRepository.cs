@@ -16,23 +16,55 @@ namespace WeatherApp.Services
 
         public ICollection<Daily> GetDailyWeather()
         {
-            return _db.Days.OrderBy(x => x.Situation).ToList();
+            return _db.Dailies.OrderBy(x => x.Situation).ToList();
         }
 
         public Daily GetDailyWeather(int id)
         {
-            return _db.Days.Where(w => w.Id == id).FirstOrDefault();
+            return _db.Dailies.Where(w => w.Id == id).FirstOrDefault();
         }
 
-        public bool CreateDailyWeather(Daily weatherDaily)
+        public bool CreateDailyWeather(List<int> citiesId, Daily daily)
         {
-            _db.Add(weatherDaily);
+            var cities = _db.Cities
+                .Where(c => citiesId.Contains(c.Id)).ToList();
+
+            foreach(var city in cities)
+            {
+                var dailyCity = new DailyCity
+                {
+                    City = city,
+                    Daily = daily
+                };
+                _db.Add(dailyCity);
+            }
+
+            _db.Add(daily);
             return Save();
         }
 
-        public bool UpdateDailyWeather(Daily weatherDaily)
+        public bool UpdateDailyWeather(List<int> citiesId, Daily daily)
         {
-            _db.Update(weatherDaily);
+            var cities = _db.Cities
+                .Where(c => citiesId.Contains(c.Id)).ToList();
+
+
+            var dailyCitiesToDelete = _db.DailyCities
+                .Where(d => d.DailyId == daily.Id);
+
+            _db.RemoveRange(dailyCitiesToDelete);
+
+            foreach (var city in cities)
+            {
+                var dailyCity = new DailyCity
+                {
+                    City = city,
+                    Daily = daily
+                };
+                _db.Add(dailyCity);
+            }
+
+            _db.Update(daily);
             return Save();
         }
 

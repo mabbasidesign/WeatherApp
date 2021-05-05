@@ -8,9 +8,9 @@ namespace WeatherApp.Models
     public class DailyCity
     {
         public int DailyId { get; set; }
-        public Daily daily { get; set; }
+        public Daily Daily { get; set; }
 
         public int CityyId { get; set; }
-        public City city { get; set; }
+        public City City { get; set; }
     }
 }

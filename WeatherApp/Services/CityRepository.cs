@@ -16,17 +16,20 @@ namespace WeatherApp.Services
 
         public bool CreateCity(City city)
         {
-            throw new NotImplementedException();
+            _db.Add(city);
+            return Save();
         }
 
         public bool DeletHorlyWeather(City city)
         {
-            throw new NotImplementedException();
+            _db.Remove(city);
+            return Save();
         }
 
         public bool Save()
         {
-            throw new NotImplementedException();
+            var saved = _db.SaveChanges();
+            return saved >= 0 ? true : false;
         }
     }
 }

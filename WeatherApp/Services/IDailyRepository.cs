@@ -11,9 +11,8 @@ namespace WeatherApp.Services
         ICollection<Daily> GetDailyWeather();
         Daily GetDailyWeather(int id);
 
-
-        bool CreateDailyWeather(Daily weatherDaily);
-        bool UpdateDailyWeather(Daily weatherDaily);
+        bool CreateDailyWeather(List<int> citiesId, Daily daily);
+        bool UpdateDailyWeather(List<int> citiesId, Daily daily);
         bool DeleteDailyWeather(Daily weatherDaily);
         bool Save();
     }

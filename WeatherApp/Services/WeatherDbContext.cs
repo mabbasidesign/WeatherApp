@@ -14,8 +14,8 @@ namespace WeatherApp.Services
         {
         }
 
-        public virtual DbSet<Daily> Days { get; set; }
-        public virtual DbSet<Hourly> Hours { get; set; }
+        public virtual DbSet<Daily> Dailies { get; set; }
+        public virtual DbSet<Hourly> Hourlies { get; set; }
         public virtual DbSet<City> Cities { get; set; }
         public virtual DbSet<DailyCity> DailyCities { get; set; }
         public virtual DbSet<HourlyCity> HourlyCities { get; set; }
@@ -26,11 +26,11 @@ namespace WeatherApp.Services
             modelBuilder.Entity<DailyCity>()
                         .HasKey(dc => new { dc.DailyId, dc.CityyId });
             modelBuilder.Entity<DailyCity>()
-                        .HasOne(d => d.city)
+                        .HasOne(d => d.City)
                         .WithMany(dc => dc.DailyCities)
                         .HasForeignKey(d => d.CityyId);
             modelBuilder.Entity<DailyCity>()
-                        .HasOne(d => d.daily)
+                        .HasOne(d => d.Daily)
                         .WithMany(dc => dc.DailyCities)
                         .HasForeignKey(d => d.DailyId);
 
@@ -38,11 +38,11 @@ namespace WeatherApp.Services
             modelBuilder.Entity<HourlyCity>()
                         .HasKey(hc => new { hc.HourlyId, hc.CityyId });
             modelBuilder.Entity<HourlyCity>()
-                        .HasOne(h => h.city)
+                        .HasOne(h => h.City)
                         .WithMany(hc => hc.HourlyCities)
                         .HasForeignKey(h => h.CityyId);
             modelBuilder.Entity<HourlyCity>()
-                        .HasOne(h => h.hourly)
+                        .HasOne(h => h.Hourly)
                         .WithMany(hc => hc.HourlyCities)
                         .HasForeignKey(h => h.HourlyId);
         }
