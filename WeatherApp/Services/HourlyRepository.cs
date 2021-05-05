@@ -16,32 +16,67 @@ namespace WeatherApp.Services
 
         public ICollection<Hourly> GetHorlyWeather()
         {
-            throw new NotImplementedException();
+            return _db.Hourlies.OrderBy(h => h.Id).ToList();
         }
 
         public Hourly GetWeatherDaily(int id)
         {
-            throw new NotImplementedException();
+            return _db.Hourlies.Where(h => h.Id == id).FirstOrDefault();
         }
 
-        public bool CreateHorlyWeather(Hourly weatherDaily)
+        public bool CreateHorlyWeather(List<int> citiesId, Hourly hourly)
         {
-            throw new NotImplementedException();
+            var cities = _db.Cities
+                .Where(c => citiesId.Contains(c.Id)).ToList();
+
+            foreach (var city in cities)
+            {
+                var hourlyCity = new HourlyCity
+                {
+                    City = city,
+                    Hourly = hourly
+                };
+                _db.Add(hourlyCity);
+            }
+
+            _db.Add(hourly);
+            return Save();
         }
 
-        public bool UpdateHorlyWeather(Hourly weatherDaily)
+        public bool UpdateHorlyWeather(List<int> citiesId, Hourly hourly)
         {
-            throw new NotImplementedException();
+            var cities = _db.Cities
+                .Where(c => citiesId.Contains(c.Id)).ToList();
+
+            var hourlyCitiesToDelete = _db.HourlyCities
+                .Where(h => h.HourlyId == hourly.Id);
+
+            _db.RemoveRange(hourlyCitiesToDelete);
+
+            foreach (var city in cities)
+            {
+                var hourlyCity = new HourlyCity
+                {
+                    City = city,
+                    Hourly = hourly
+                };
+                _db.Add(hourlyCity);
+            }
+
+            _db.Add(hourly);
+            return Save();
         }
 
-        public bool DeletHorlyWeather(Hourly weatherDaily)
+        public bool DeletHorlyWeather(Hourly hourly)
         {
-            throw new NotImplementedException();
+            _db.Remove(hourly);
+            return Save();
         }
         
         public bool Save()
         {
-            throw new NotImplementedException();
+            var saved = _db.SaveChanges();
+            return saved >= 0 ? true : false;
         }
         
     }

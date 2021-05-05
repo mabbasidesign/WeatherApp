@@ -13,7 +13,7 @@ namespace WeatherApp.Services
 
         bool CreateDailyWeather(List<int> citiesId, Daily daily);
         bool UpdateDailyWeather(List<int> citiesId, Daily daily);
-        bool DeleteDailyWeather(Daily weatherDaily);
+        bool DeleteDailyWeather(Daily daily);
         bool Save();
     }
 }

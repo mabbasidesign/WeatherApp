@@ -68,9 +68,9 @@ namespace WeatherApp.Services
             return Save();
         }
 
-        public bool DeleteDailyWeather(Daily weatherDaily)
+        public bool DeleteDailyWeather(Daily daily)
         {
-            _db.Remove(weatherDaily);
+            _db.Remove(daily);
             return Save();
         }
 

@@ -11,10 +11,9 @@ namespace WeatherApp.Services
         ICollection<Hourly> GetHorlyWeather();
         Hourly GetWeatherDaily(int id);
 
-
-        bool CreateHorlyWeather(Hourly weatherDaily);
-        bool UpdateHorlyWeather(Hourly weatherDaily);
-        bool DeletHorlyWeather(Hourly weatherDaily);
+        bool CreateHorlyWeather(List<int> citiesId, Hourly hourly);
+        bool UpdateHorlyWeather(List<int> citiesId, Hourly hourly);
+        bool DeletHorlyWeather(Hourly hourly);
         bool Save(); 
     }
 }
