@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace WeatherApp.Dtos
 {
-    public class Daily
+    public class DailyDtos
     {
         public int Id { get; set; }
         public DateTime Date { get; set; }

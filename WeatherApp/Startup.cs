@@ -30,6 +30,10 @@ namespace WeatherApp
             services.AddControllersWithViews();
 
             services.AddControllersWithViews();
+
+            services.AddScoped<ICityRepository, CityRepository>();
+            services.AddScoped<IDailyRepository, DailyRepository>();
+            services.AddScoped<IHourlyRepository, HourlyRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace WeatherApp.Dtos
 {
-    public class Hourly
+    public class HourlyDtos
     {
         public int Id { get; set; }
         public int Temperature { get; set; }

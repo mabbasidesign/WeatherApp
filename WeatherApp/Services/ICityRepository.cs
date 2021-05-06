@@ -6,10 +6,14 @@ using WeatherApp.Models;
 
 namespace WeatherApp.Services
 {
-    interface ICityRepository
+    public interface ICityRepository
     {
+        ICollection<City> GetCities();
+        City GetCity(int id);
+
         bool CreateCity(City city);
-        bool DeletHorlyWeather(City city);
+        bool UpdateCity(City city);
+        bool DeleteCity(City city);
         bool Save();
     }
 }
