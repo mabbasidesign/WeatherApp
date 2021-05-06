@@ -6,10 +6,10 @@ using WeatherApp.Models;
 
 namespace WeatherApp.Services
 {
-    interface IHourlyRepository
+    public interface IHourlyRepository
     {
-        ICollection<Hourly> GetHorlyWeather();
-        Hourly GetWeatherDaily(int id);
+        ICollection<Hourly> GetHorlyWeathers();
+        Hourly GetHorlyWeather(int id);
 
         bool CreateHorlyWeather(List<int> citiesId, Hourly hourly);
         bool UpdateHorlyWeather(List<int> citiesId, Hourly hourly);

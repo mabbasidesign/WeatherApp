@@ -14,12 +14,12 @@ namespace WeatherApp.Services
             _db = db;
         }
 
-        public ICollection<Hourly> GetHorlyWeather()
+        public ICollection<Hourly> GetHorlyWeathers()
         {
             return _db.Hourlies.OrderBy(h => h.Id).ToList();
         }
 
-        public Hourly GetWeatherDaily(int id)
+        public Hourly GetHorlyWeather(int id)
         {
             return _db.Hourlies.Where(h => h.Id == id).FirstOrDefault();
         }
