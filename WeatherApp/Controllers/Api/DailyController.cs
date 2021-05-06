@@ -9,7 +9,7 @@ using WeatherApp.Dtos;
 
 namespace WeatherApp.Controllers.Api
 {
-    [Route("api/daily")]
+    [Route("api/Daily")]
     [ApiController]
     public class DailyController : Controller
     {
@@ -22,7 +22,7 @@ namespace WeatherApp.Controllers.Api
         //api/daily
         [ProducesResponseType(200, Type = typeof(IEnumerable<DailyDtos>))]
         [ProducesResponseType(400)]
-        public IActionResult GetDailyWeathers()
+        public IActionResult GetDailies()
         {
             var dailies = _dailyRepository.GetDailyWeathers();
 
@@ -51,11 +51,11 @@ namespace WeatherApp.Controllers.Api
         }
 
         //api/daily/dailyId
-        [HttpGet("{dailyId}", Name = "GetDailyWeathers")]
+        [HttpGet("{dailyId}", Name = "GetDaily")]
         [ProducesResponseType(200, Type = typeof(DailyDtos))]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
-        public IActionResult GetDailyWeather(int dailyId)
+        public IActionResult GetDaily(int dailyId)
         {
             var daily = _dailyRepository.GetDailyWeather(dailyId);
 
@@ -124,7 +124,7 @@ namespace WeatherApp.Controllers.Api
         }
 
         //api/daily/dailyId
-        [HttpDelete("dailyId}")]
+        [HttpDelete("{dailyId}")]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
