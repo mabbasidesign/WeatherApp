@@ -6,9 +6,9 @@ using WeatherApp.Models;
 
 namespace WeatherApp.Services
 {
-    interface IDailyRepository
+    public interface IDailyRepository
     {
-        ICollection<Daily> GetDailyWeather();
+        ICollection<Daily> GetDailyWeathers();
         Daily GetDailyWeather(int id);
 
         bool CreateDailyWeather(List<int> citiesId, Daily daily);

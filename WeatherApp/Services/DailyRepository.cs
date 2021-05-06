@@ -14,7 +14,7 @@ namespace WeatherApp.Services
             _db = db;
         }
 
-        public ICollection<Daily> GetDailyWeather()
+        public ICollection<Daily> GetDailyWeathers()
         {
             return _db.Dailies.OrderBy(x => x.Situation).ToList();
         }
